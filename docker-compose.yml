@@ -1,0 +1,21 @@
+version: '3'
+services:
+    php:
+        container_name: dockerlogger-php
+        build: 
+            context: .
+        ports:
+            - "88:80"
+        networks:
+            backend:
+                aliases:
+                - php
+            main:
+                aliases:
+                - php
+        volumes:
+            - ./:/var/www/html
+            - //var/run/docker.sock:/var/run/docker.sock
+networks:
+    main:
+    backend:
